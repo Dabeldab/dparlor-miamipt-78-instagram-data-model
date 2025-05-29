@@ -37,7 +37,7 @@ class Comments(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     comment_text: Mapped[str] = mapped_column(String(500), unique=False, nullable=True)
     author_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
-    #post_id: Mapped[int] = mapped_column(ForeignKey("post.id"))
+    post_id: Mapped[int] = mapped_column(ForeignKey("post.id"))
 
     #def serialize(self):
         #return {
@@ -52,8 +52,8 @@ class Media(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     #type: Mapped[Enum] = mapped_column()
     url: Mapped[str] = mapped_column(String(300),  nullable=False)
-    #post_id: Mapped[int] = mapped_column(ForeignKey("post.id"))
-    #post: Mapped["Post"] = relationship(back_populates="media")
+    post_id: Mapped[int] = mapped_column(ForeignKey("post.id"))
+    post: Mapped["Post"] = relationship(back_populates="media")
 
 
 
